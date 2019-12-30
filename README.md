@@ -84,7 +84,7 @@ Here is the schema and explanation of each variable in the files:
 
 * Top 10 features which influence whether the customer will respond to an offer or not after viewing the offer are: 'total_amount', 'membership_tenure' , 'social', 'difficulty', 'duration', 'reward', '2018', '2016', 'income_30ths' and 'age_50s'.
 
-* [Project Notebook: Starbucks Capstone Challenge]()
+* [Project Notebook: Starbucks Capstone Challenge](https://nbviewer.jupyter.org/github/gauravansal/Starbucks-Capstone-Challenge/blob/master/Starbucks_Capstone_notebook.ipynb)
 * [Blog Post: Whom will respond to Starbucks Offers?](https://medium.com/@ansal.gaurav/whom-will-respond-to-starbucks-offers-84f98eded283)
 
 ## Licensing, Authors, and Acknowledgements<a name="licensing"></a>
