@@ -13212,6 +13212,7 @@ div#notebook {
 <li>Calculate the feature importances given by best estimator of the trained model.</li>
 <li>Compute the performance of best model on test set and visualize the performance via confusion matrix plot.</li>
 </ol>
+<p>The resulting solution will be that best model would be able to determine which customers would respond.</p>
 
 </div>
 </div>
@@ -21468,22 +21469,22 @@ Refer <a href="https://machinelearningmastery.com/classification-accuracy-is-not
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training LogisticRegression :
 LogisticRegression
-Time taken : 5.39 secs
+Time taken : 5.1 secs
 Best f1_score : 0.8429
 ****************************************
 Training RandomForestClassifier :
 RandomForestClassifier
-Time taken : 4.15 secs
+Time taken : 4.56 secs
 Best f1_score : 0.9216
 ****************************************
 Training AdaBoostClassifier :
 AdaBoostClassifier
-Time taken : 16.92 secs
+Time taken : 18.82 secs
 Best f1_score : 0.896
 ****************************************
 Training GradientBoostingClassifier :
 GradientBoostingClassifier
-Time taken : 54.87 secs
+Time taken : 60.56 secs
 Best f1_score : 0.9209
 ****************************************
 </pre>
@@ -21549,25 +21550,25 @@ Best f1_score : 0.9209
     <tr>
       <th>LogisticRegression</th>
       <td>0.842906</td>
-      <td>5.39</td>
+      <td>5.10</td>
       <td>LogisticRegression(C=1.0, class_weight=None, d...</td>
     </tr>
     <tr>
       <th>RandomForestClassifier</th>
       <td>0.921618</td>
-      <td>4.15</td>
+      <td>4.56</td>
       <td>(DecisionTreeClassifier(class_weight=None, cri...</td>
     </tr>
     <tr>
       <th>AdaBoostClassifier</th>
       <td>0.896027</td>
-      <td>16.92</td>
+      <td>18.82</td>
       <td>(DecisionTreeClassifier(class_weight=None, cri...</td>
     </tr>
     <tr>
       <th>GradientBoostingClassifier</th>
       <td>0.920881</td>
-      <td>54.87</td>
+      <td>60.56</td>
       <td>([DecisionTreeRegressor(criterion='friedman_ms...</td>
     </tr>
   </tbody>
@@ -21708,7 +21709,7 @@ RandomForestClassifier and GradientBoostingClassifier has nearly equal f1_score(
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training RandomForestClassifier :
 RandomForestClassifier
-Time taken : 19.77 secs
+Time taken : 19.83 secs
 Best f1_score : 0.9319
 ****************************************
 </pre>
@@ -22408,7 +22409,7 @@ Best f1_score : 0.9319
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[142]:</div>
+<div class="prompt input_prompt">In&nbsp;[141]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Prepare test data in order to predict classes for the test data</span>
@@ -22427,7 +22428,7 @@ Best f1_score : 0.9319
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[142]:</div>
+    <div class="prompt output_prompt">Out[141]:</div>
 
 
 
@@ -22608,11 +22609,45 @@ Best f1_score : 0.9319
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[143]:</div>
+<div class="prompt input_prompt">In&nbsp;[142]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print shape of dataframe X_test_scaled</span>
 <span class="n">X_test_scaled</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[142]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(16626, 52)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[143]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print shape of y_test</span>
+<span class="n">y_test</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
     </div>
@@ -22631,7 +22666,7 @@ Best f1_score : 0.9319
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(16626, 52)</pre>
+<pre>(16626, 1)</pre>
 </div>
 
 </div>
@@ -22645,8 +22680,9 @@ Best f1_score : 0.9319
 <div class="prompt input_prompt">In&nbsp;[144]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print shape of y_test</span>
-<span class="n">y_test</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Classification of test data using best model trained on train data</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfc_best_est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+<span class="n">y_pred</span>
 </pre></div>
 
     </div>
@@ -22665,41 +22701,6 @@ Best f1_score : 0.9319
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(16626, 1)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[145]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Classification of test data using best model trained on train data</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">rfc_best_est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
-<span class="n">y_pred</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[145]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
 <pre>array([0, 1, 1, ..., 0, 0, 1])</pre>
 </div>
 
@@ -22711,7 +22712,7 @@ Best f1_score : 0.9319
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[146]:</div>
+<div class="prompt input_prompt">In&nbsp;[145]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print shape of y_pred</span>
@@ -22728,7 +22729,7 @@ Best f1_score : 0.9319
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[146]:</div>
+    <div class="prompt output_prompt">Out[145]:</div>
 
 
 
@@ -22752,7 +22753,7 @@ Best f1_score : 0.9319
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[147]:</div>
+<div class="prompt input_prompt">In&nbsp;[146]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate confusion matrix</span>
@@ -22769,7 +22770,7 @@ Best f1_score : 0.9319
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[147]:</div>
+    <div class="prompt output_prompt">Out[146]:</div>
 
 
 
@@ -22787,7 +22788,7 @@ Best f1_score : 0.9319
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[148]:</div>
+<div class="prompt input_prompt">In&nbsp;[147]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate tn, fp, fn, tp from confusion matrix</span>
@@ -22826,7 +22827,7 @@ true postives: 8661
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[149]:</div>
+<div class="prompt input_prompt">In&nbsp;[148]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate precision, recall and f1_score of the test data</span>
@@ -22873,7 +22874,7 @@ recall score on test data: 0.9602
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[150]:</div>
+<div class="prompt input_prompt">In&nbsp;[149]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define function plot_confusion_matrix which plots confusion matrix</span>
@@ -22947,7 +22948,7 @@ recall score on test data: 0.9602
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[151]:</div>
+<div class="prompt input_prompt">In&nbsp;[150]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot non-normalized confusion matrix</span>
@@ -23002,7 +23003,7 @@ recall score on test data: 0.9602
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[152]:</div>
+<div class="prompt input_prompt">In&nbsp;[151]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot normalized confusion matrix</span>
@@ -23056,6 +23057,7 @@ recall score on test data: 0.9602
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>From above normalized confusion matrix, we observed that there are 4% of chances of misclassifying an indvidual whom would normally respond to an individual that would not respond to offer. Similarly, there are 11% of chances of misclassifying an individual whom would not respond to an individual whom would respond to an offer. As, False Negatives is less than False Positives, our predictive model is doing good as it has very low chances of missing an individual whom would respond. As Starbucks would not like to miss to send offers to individuals whom would respond to offers, this model would work fine in this case and by using this model Starbucks would not miss sending offers by great extent to individuals whom would respond to offers and therefore, overall business revenue would not get affected. Also, Starbucks would not mind sending offers to few individuals whom would not respond if Starbucks is able to make sure that they have covered up the individuals whom would respond to offers to great extent. Therefore, our predictive model is well suited for this case.</strong></p>
+<p><strong>Also, we can improve this project by taking up another probelm statement i.e. determining how much a customer could spend based upon the offer data and demographic data using the supervised regression algorithms.</strong></p>
 
 </div>
 </div>
