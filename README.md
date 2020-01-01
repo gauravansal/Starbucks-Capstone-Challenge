@@ -74,6 +74,7 @@ Here is the schema and explanation of each variable in the files:
 ## Instructions<a name="instructions"></a>
 
 1. The entire anlaysis is contained within the jupyter notebook.
+2. All 3 .json files should be located in data folder as combined data would be created from these 3 files located in data folder.
 
 
 ## Results<a name="results"></a>
