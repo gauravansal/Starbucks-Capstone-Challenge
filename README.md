@@ -15,14 +15,14 @@
 The Starbucks project is coming out from customer marketing domain. Traditional marketing analytics or scoreboards are essential for evaluating the success or failure of organization’s past marketing activities. But today's marketers or organizations can leverage advanced marketing techniques like predictive modeling for customer behavior, predictive lead scoring, and all sorts of strategies based on predictive analytics insights. 
 
 Various Cases for Predictive Marketing Analytics are:
-•	Detailed Lead Scoring
-•	Lead Segmentation for Campaign Nurturing
-•	Targeted Content Distribution
-•	Lifetime Value Prediction
-•	Churn Rate Prediction
-•	Upselling and Cross-Selling Readiness
-•	Understanding Product Fit
-•	Optimization of Marketing Campaigns
+ - Detailed Lead Scoring
+ - Lead Segmentation for Campaign Nurturing
+ - Targeted Content Distribution
+ - Lifetime Value Prediction
+ - Churn Rate Prediction
+ - Upselling and Cross-Selling Readiness
+ - Understanding Product Fit
+ - Optimization of Marketing Campaigns
 
 In this Project, we would deal with the case of ‘Optimization of Marketing Campaigns’. Predictive techniques can make an organization marketing investment much more efficient and helps in regularly validating results. Connecting customer information to the operational data provides valuable insight into customer behavior and the health of your overall business. 
 
@@ -37,7 +37,7 @@ In this project, we would go through the predictive modeling technique for custo
 In this project, Starbucks wants to connect offer data, customer data and transaction data (operational data) to gain insights about customer behavior and overall effectiveness of offers as a value for business. 
 
 
-**With the above key statement in mind, below is the main objective or problem motivation or problem statement:**
+*With the above key statement in mind, below is the main objective or problem motivation or problem statement:*
 
 >**_Build a model that predicts whether a customer would respond to an offer or not._**
 
